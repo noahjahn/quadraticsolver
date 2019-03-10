@@ -2,7 +2,7 @@ Command Line Quadratic Equation Solver
 Client: JKK Engineering
 Contact: Kapenga
 Programmers: Noah Jahn & Paul VanderWheele
-    noah.a.jahn@wmich.edu paul..vanderwheel@wmich.edu
+    noah.a.jahn@wmich.edu paul.m.vanderweele@wmich.edu
 
 Description:
 

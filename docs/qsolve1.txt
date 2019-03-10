@@ -1,26 +1,23 @@
 cs4900
-Spring 201
+Spring 2019
 
-Here are prototypes for the qsolve functions called from
-main(). 
-1) Following the functional programing style unless 
-   noted, these functions should do no IO. 
+Here are prototypes for the qsolve functions called from main().
+1) Following the functional programing style unless noted, these functions
+    should do no IO.
 2) All functions validate their arguments.
-4) All functions should log, if logging on, the args 
-   when called. Also log any invalid args.
-5) All functions should return a flag indicating
-   success or failure.
-3) All functions should list copyright information.
+3) All functions should log, if logging on, the args when called.
+    Also log any invalid args.
+4) All functions should return a flag indicating success or failure.
+5) All functions should list copyright information.
 
-When started, qsolve should provide version
-information, a brief comment and mention the
-"help" command.
+When started, qsolve should provide version information, a brief comment and
+mention the "help" command.
 
-qsolve should be distributed as a tar file with
-README, VERSION, LICENSE and INSTALL files.
+qsolve should be distributed as a tar file with README, VERSION,
+LICENSE and INSTALL files.
 
 After untarring qsolve, untars into into
-  ./qsolve-<VERSION> 
+  ./qsolve-<VERSION>
 Compiling and testing an be one with
   % make qsolve
     ...
@@ -28,7 +25,7 @@ Compiling and testing an be one with
     ...
 "make test" does not do unit testing, only
 numerous tests of the compiled program,
-redirecting stdio . Reporting a clear 
+redirecting stdio . Reporting a clear
 message on what fails.
 
 qsolve output should tell the user:
@@ -38,7 +35,7 @@ qsolve output should tell the user:
 4) No real roots
 5) Internal error
 6) Possible loss of significance in result
-7) Input, a b c, should be ieee-fp 32 bit 
+7) Input, a b c, should be ieee-fp 32 bit
    normalized values, with no more than 8 decimal
    places.
 8) Print 8 significant decimal places.
@@ -47,12 +44,12 @@ Note:
    % qsolve
    ... Prompt the user for input
    input a b c : <a> <b> <c>
-   ...  
+   ...
 
 int qsGetline(char *line, int nline);
 int qsValidate(char *line, int nline,
     double *a, double *b, double *c);
-int qsSolve(double a, double b, double c, 
+int qsSolve(double a, double b, double c,
     double *x1, double *x2);
 int qsErrors(...);
 int qsResults(...);
@@ -60,4 +57,3 @@ int qsPutline(char line*, int nline);
 int qsLogEnable(...);
 int qsLog(...);
 int qsHelp(...);
-
