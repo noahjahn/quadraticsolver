@@ -1,5 +1,5 @@
 CC = gcc
-FLAGS = -Wall -pedantic
+CCFLAGS = -Wall -pedantic
 
 build: qsLog.o
 
