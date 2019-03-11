@@ -5,7 +5,7 @@
     LICENSE: GPL 2.0
 */
 
-#include "qsLog.h"
+#include "qsLogEnable.h"
 
 /*
     Enable logging through out the program with a simple macro
@@ -16,5 +16,5 @@ int qsLogEnable() {
     #define LOG_ON 1
     #endif
 
-    return 0
+    return 0;
 }
