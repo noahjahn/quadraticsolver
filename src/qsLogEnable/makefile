@@ -7,6 +7,6 @@ qsLog.o: qsLogEnable.h qsLogEnable.c
 	$(CC) $(CCFLAGS) -c qsLogEnable.c
 
 clean:
-	rm -f qsLogEnable.o
+	rm -rf *.o
 
 uTest:
