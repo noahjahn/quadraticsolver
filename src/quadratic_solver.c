@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "qsHelp/qsHelp.h"
 #include "qsLogEnable/qsLogEnable.h"
 #include "qsLog/qsLog.h"
 
@@ -29,67 +30,48 @@ int main(int argc, char const *argv[]) {
     printf("For help on how to use the program, see ./qsolve help\n\n");
 
     // check if arguments were supplied for a, b, and c
-    if (argc == 1) {
-        // don't do anything, this just covers the case before being less than 4..
-    } else if (argc == 2) {
-        printf("%d\n", argc);
+    if (argc == 2) {
         // check if argument passed in was help
         if (strcmp(argv[1], "help") == 0) {
-            // if help is passed in, display help information
-            printf("This program helps calculate a quadratic equation in standard\n");
-            printf("form (ax^2 + bx + c = 0) with three (3) coefficients passed\n");
-            printf("in as arguments: a, b, and c. With your a, b, and c already\n");
-            printf("decided, run the program with them as arguments separated by\n");
-            printf("a space.\n\nExample (where a = 5, b = 6 and c = 1):\n");
-            printf("./qsolve 5 6 1\n");
-            printf("\n\nTo enable logging run:\n./qsolve 5 6 1 log\n");
-        } else {
-            // if help char * wasn't passed in, tell the user the error
-            printf("INVALID ARGUMENTS: see ./qsolve help\n");
-            ret -1;
-        }
-    } else if (argc == 5) {
-        // check if logging argument was passed in
-        if (strcmp(argv[4], "log") == 0) {
+            if (qsHelp() != 0) {
+                printf("ERROR: unable to print help\n");
+                ret = -300;
+            }
+        // check if argument passed in was -log
+        } else if (strcmp(argv[1], "-log") == 0) { // check if logging argument was passed in
             if (qsLogEnable() != 0) { // turn on logging
                 printf("ERROR: unable to enable logging\n");
-                ret -2;
+                ret = -301;
             }
-        } else {
-            printf("INVALID ARGUMENTS: see ./qsolve help\n");
         }
-    } else if (argc < 4) {
-        // if less than four arguments were passed in, tell the user the error
-        printf("INVALID ARGUMENTS: see ./qsolve help\n");
-        ret -1;
-    } else if (argc > 4) {
-        // if more than four arguments were passed in, tell the user the error
-        printf("INVALID ARGUMENTS: see ./qsolve help\n");
-        ret -1;
+    } else if (argc > 2) {
+        // if help char * wasn't passed in, tell the user the error
+        printf("ERROR: too many arguments. See ./qsolve help\n");
+        ret = -102;
     }
 
-    // if we didn't find an error with number of arguments, we can continue..
-    if (ret == 0) {
-        #ifdef LOG_ON
-            qsLog("quadratic_solvers.c - argument counts okay");
-        #endif
-        if (sscanf(argv[1], "%lf", &a) == 1) {
-            #ifdef LOG_ON
-                qsLog("quadratic_solvers.c - coefficient a loaded");
-            #endif
-        } else {
-            ret -1; // unable to load first argument, is it a double?
-            #ifdef LOG_ON
-                qsLog("quadratic_solvers.c - INVALID ARGUMENTS: unable to load coefficient a, is it a double?");
-            #endif
-            printf("INVALID ARGUMENTS: unable to load coefficient a, is it a double?\n");
-        }
-        // qsValidate()
-    } else {
-        #ifdef LOG_ON
-            qsLog("quadratic_solvers.c - INVALID ARGUMENTS");
-        #endif
-    }
+    // // if we didn't find an error with number of arguments, we can continue..
+    // if (ret == 0) {
+    //     #ifdef LOG_ON
+    //         qsLog("quadratic_solvers.c - argument counts okay");
+    //     #endif
+    //     if (sscanf(argv[1], "%lf", &a) == 1) {
+    //         #ifdef LOG_ON
+    //             qsLog("quadratic_solvers.c - coefficient a loaded");
+    //         #endif
+    //     } else {
+    //         ret -1; // unable to load first argument, is it a double?
+    //         #ifdef LOG_ON
+    //             qsLog("quadratic_solvers.c - INVALID ARGUMENTS: unable to load coefficient a, is it a double?");
+    //         #endif
+    //         printf("INVALID ARGUMENTS: unable to load coefficient a, is it a double?\n");
+    //     }
+    //     // qsValidate()
+    // } else {
+    //     #ifdef LOG_ON
+    //         qsLog("quadratic_solvers.c - INVALID ARGUMENTS");
+    //     #endif
+    // }
 
     return ret;
 }
