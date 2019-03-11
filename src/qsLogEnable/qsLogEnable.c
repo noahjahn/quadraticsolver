@@ -15,4 +15,6 @@ int qsLogEnable() {
     #ifndef LOG_ON
     #define LOG_ON 1
     #endif
+
+    return 0
 }
