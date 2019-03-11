@@ -3,7 +3,7 @@ FLAGS = -Wall -pedantic
 
 build: qsLogEnable.o
 
-qsLog.o: qsLogEnable.h qsLogEnable.c
+qsLogEnable.o: qsLogEnable.h qsLogEnable.c
 	$(CC) $(CCFLAGS) -c qsLogEnable.c
 
 clean:
