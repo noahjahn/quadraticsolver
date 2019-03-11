@@ -1,30 +1,41 @@
 CC = gcc
-FLAGS = -Wall -pedantic
+CCFLAGS = -Wall -pedantic
 
 #after copying all the .c's to the qs folder (main): -o *.c -lm
 
-quadratic_solver: quadratic_solver.c qsLog/qsLog.o qsLogEnable/qsLogEnable.o
-	$(CC) $(CCFLAGS) -c quadratic_solver.c;
-	$(CC) $(CCFLAGS) -o ../build/qsolve quadratic_solver.o qsLog/qsLog.o qsLogEnable/qsLogEnable.o
-
 build:
-	mkdir ../build/src
+	mkdir ../build; mkdir ../build/src;
 	# @cd qsErrors; make build
 	# @cd qsGetline; make build
-	# @cd qsHelp; make build
+	@cd qsHelp; make build; mv -f qsHelp.o ../../build/src/qsHelp.o;
 	@cd qsLog; make build; mv -f qsLog.o ../../build/src/qsLog.o;
-	@cd qsLogEnable; make build; mv -f qsLogEnable.o ../../build/src/qsLog.o;
+	@cd qsLogEnable; make build; mv -f qsLogEnable.o ../../build/src/qsLogEnable.o;
 	# @cd qsPutline; make build
 	# @cd qsResults; make build
 	# @cd qsSolve; make build
 	# @cd qsValidate; make build
+	make quadratic_solver
+
+quadratic_solver: quadratic_solver.c qsLog/qsLog.o qsLogEnable/qsLogEnable.o
+	$(CC) $(CCFLAGS) -c quadratic_solver.c;
+	@mv quadratic_solver.o ../build/src/quadratic_solver.o
+	$(CC) $(CCFLAGS) -o ../build/qsolve ../build/src/quadratic_solver.o ../build/src/qsHelp.o ../build/src/qsLog.o ../build/src/qsLogEnable.o
+
+run:
+	../build/qsolve
+
+runLog:
+	../build/qsolve -log
+
+runHelp:
+	../build/qsolve help
 
 clean:
 	rm -rf ../build/src
-	rm -rf *.o
+	rm -f ../build/qsolve
 	# @cd qsErrors; make clean
 	# @cd qsGetline; make clean
-	# @cd qsHelp; make clean
+	@cd qsHelp; make clean;
 	@cd qsLog; make clean;
 	@cd qsLogEnable; make clean;
 	# @cd qsPutline; make clean
