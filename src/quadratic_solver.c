@@ -52,7 +52,7 @@ int main(int argc, char const *argv[]) {
         ret = -102;
     }
 
-    // // if we didn't find an error with number of arguments, we can continue..
+    // if we didn't find an error with number of arguments, we can continue..
     if (ret == 0) {
         if (logging) {
             qsLog("quadratic_solvers.c - argument counts okay");
