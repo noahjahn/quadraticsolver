@@ -14,12 +14,12 @@ build:
 	# @cd qsResults; make build
 	# @cd qsSolve; make build
 	# @cd qsValidate; make build
-	make quadratic_solver
+	make qsolve
 
-quadratic_solver: quadratic_solver.c qsLog/qsLog.o qsLogEnable/qsLogEnable.o
-	$(CC) $(CCFLAGS) -c quadratic_solver.c
-	@mv quadratic_solver.o ../build/src/quadratic_solver.o
-	$(CC) $(CCFLAGS) -o ../build/qsolve ../build/src/quadratic_solver.o ../build/src/qsErrors.o ../build/src/qsHelp.o ../build/src/qsLog.o ../build/src/qsLogEnable.o
+qsolve: qsolve.c qsLog/qsLog.o qsLogEnable/qsLogEnable.o
+	$(CC) $(CCFLAGS) -c qsolve.c
+	@mv qsolve.o ../build/src/qsolve.o
+	$(CC) $(CCFLAGS) -o ../build/qsolve ../build/src/qsolve.o ../build/src/qsErrors.o ../build/src/qsHelp.o ../build/src/qsLog.o ../build/src/qsLogEnable.o
 
 run:
 	../build/qsolve
