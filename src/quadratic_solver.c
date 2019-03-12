@@ -13,6 +13,8 @@
 #include "qsLogEnable/qsLogEnable.h"
 #include "qsLog/qsLog.h"
 
+int logging = 0; // 0 is off 1 is on
+
 /*
     Controller for the program. This is where the program starts.
 */
@@ -39,7 +41,7 @@ int main(int argc, char const *argv[]) {
             }
         // check if argument passed in was -log
         } else if (strcmp(argv[1], "-log") == 0) { // check if logging argument was passed in
-            if (qsLogEnable() != 0) { // turn on logging
+            if (qsLogEnable(&logging) != 0) { // turn on logging
                 printf("ERROR: unable to enable logging\n");
                 ret = -301;
             }
@@ -51,27 +53,15 @@ int main(int argc, char const *argv[]) {
     }
 
     // // if we didn't find an error with number of arguments, we can continue..
-    // if (ret == 0) {
-    //     #ifdef LOG_ON
-    //         qsLog("quadratic_solvers.c - argument counts okay");
-    //     #endif
-    //     if (sscanf(argv[1], "%lf", &a) == 1) {
-    //         #ifdef LOG_ON
-    //             qsLog("quadratic_solvers.c - coefficient a loaded");
-    //         #endif
-    //     } else {
-    //         ret -1; // unable to load first argument, is it a double?
-    //         #ifdef LOG_ON
-    //             qsLog("quadratic_solvers.c - INVALID ARGUMENTS: unable to load coefficient a, is it a double?");
-    //         #endif
-    //         printf("INVALID ARGUMENTS: unable to load coefficient a, is it a double?\n");
-    //     }
-    //     // qsValidate()
-    // } else {
-    //     #ifdef LOG_ON
-    //         qsLog("quadratic_solvers.c - INVALID ARGUMENTS");
-    //     #endif
-    // }
+    if (ret == 0) {
+        if (logging) {
+            qsLog("quadratic_solvers.c - argument counts okay");
+        }
+    } else {
+        if (logging) {
+            qsLog("quadratic_solvers.c - INVALID ARGUMENTS");
+        }
+    }
 
     return ret;
 }

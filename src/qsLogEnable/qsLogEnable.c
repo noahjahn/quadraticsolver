@@ -11,10 +11,9 @@
     Enable logging through out the program with a simple macro
 */
 
-int qsLogEnable() {
-    #ifndef LOG_ON
-    #define LOG_ON 1
-    #endif
+int qsLogEnable(int * logging) {
+
+    *logging = 1;
 
     return 0;
 }

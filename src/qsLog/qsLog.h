@@ -5,6 +5,8 @@
     LICENSE: GPL 2.0
 */
 
+extern int logging;
+
 /*
     Prints passed in message to log file located in build directory
 */

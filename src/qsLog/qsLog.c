@@ -16,17 +16,14 @@
 
 int qsLog(char * log) {
 
+    if (logging) {
+        printf("LOGGING!\n");
+    }
+
     int ret = 0; // return value for errors, start with being okay
 
-    #ifdef LOG_ON // if logging is turned on, well tell the log that we are in the log function
     FILE * fp; // create file pointer
-    fp = fopen("../../build/log.txt", "a+"); // a+ opens for append and creates if not exist
-    ret = fprintf(fp, "qsLog.c - Entered qsLog function\n"); // print the log to the log file
-    fclose(fp); // close the file pointer
-    #endif
-
-    FILE * fp; // create file pointer
-    fp = fopen("../../build/log.txt", "a+"); // a+ opens for append and creates if not exist
+    fp = fopen("../build/log.txt", "a+"); // a+ opens for append and creates if not exist
     ret = fprintf(fp, "%s\n", log);// print the log to the log fill
     fclose(fp); // close the file pointer
 

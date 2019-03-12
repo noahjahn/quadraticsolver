@@ -14,7 +14,7 @@ build:
 	# @cd qsResults; make build
 	# @cd qsSolve; make build
 	# @cd qsValidate; make build
-	make quadratic_solver
+	make quadratic_solver;
 
 quadratic_solver: quadratic_solver.c qsLog/qsLog.o qsLogEnable/qsLogEnable.o
 	$(CC) $(CCFLAGS) -c quadratic_solver.c;
