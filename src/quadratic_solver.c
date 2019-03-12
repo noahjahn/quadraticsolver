@@ -50,7 +50,7 @@ int main(int argc, char const *argv[]) {
     } else if (argc > 2) {
         // if help char * wasn't passed in, tell the user the error
         // printf("ERROR: too many arguments. See ./qsolve help\n");
-        qsErrors("ERROR: too many arguments. See ./qsolve help");
+        qsErrors("too many arguments. See ./qsolve help");
         ret = -102;
     }
 
