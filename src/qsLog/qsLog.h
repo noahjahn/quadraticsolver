@@ -22,8 +22,8 @@ extern int logging;
         ... variables for above four format specifiers
 
     Output:
-        0 - if successful
-        -1 - on error
+        0   - if successful
+        -1  - on error
 
     Example:
         char * parameter = "test";
