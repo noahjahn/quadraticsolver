@@ -5,10 +5,11 @@
     LICENSE: GPL 2.0
 */
 
-#define VERSION 0.10
+#define VERSION 0.40
 
 #include <stdio.h>
 #include <string.h>
+#include "qsErrors/qsErrors.h"
 #include "qsHelp/qsHelp.h"
 #include "qsLogEnable/qsLogEnable.h"
 #include "qsLog/qsLog.h"
@@ -48,14 +49,15 @@ int main(int argc, char const *argv[]) {
         }
     } else if (argc > 2) {
         // if help char * wasn't passed in, tell the user the error
-        printf("ERROR: too many arguments. See ./qsolve help\n");
+        // printf("ERROR: too many arguments. See ./qsolve help\n");
+        qsErrors("ERROR: too many arguments. See ./qsolve help");
         ret = -102;
     }
 
     // if we didn't find an error with number of arguments, we can continue..
     if (ret == 0) {
         if (logging) {
-            qsLog("quadratic_solvers.c - argument counts okay");
+            qsLog("quadratic_solvers.c - argument counts okay %s", "test");
         }
     } else {
         if (logging) {
