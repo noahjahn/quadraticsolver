@@ -1,15 +1,15 @@
 CC = gcc
-CCFLAGS = -Wall -pedantic
+CCFLAGS = -Wall -pedantic -std=c99
 
 #after copying all the .c's to the qs folder (main): -o *.c -lm
 
 build:
 	mkdir ../build; mkdir ../build/src
-	@cd qsErrors; make build; mv -f qsErrors.o ../../build/src/qsErrors.o
+	@cd qsErrors; make build; cp -f qsErrors.o ../../build/src/qsErrors.o
 	# @cd qsGetline; make build
-	@cd qsHelp; make build; mv -f qsHelp.o ../../build/src/qsHelp.o
-	@cd qsLog; make build; mv -f qsLog.o ../../build/src/qsLog.o
-	@cd qsLogEnable; make build; mv -f qsLogEnable.o ../../build/src/qsLogEnable.o
+	@cd qsHelp; make build; cp -f qsHelp.o ../../build/src/qsHelp.o
+	@cd qsLog; make build; cp -f qsLog.o ../../build/src/qsLog.o
+	@cd qsLogEnable; make build; cp -f qsLogEnable.o ../../build/src/qsLogEnable.o
 	# @cd qsPutline; make build
 	# @cd qsResults; make build
 	# @cd qsSolve; make build
@@ -18,7 +18,7 @@ build:
 
 qsolve: qsolve.c qsLog/qsLog.o qsLogEnable/qsLogEnable.o
 	$(CC) $(CCFLAGS) -c qsolve.c
-	@mv qsolve.o ../build/src/qsolve.o
+	@cp qsolve.o ../build/src/qsolve.o
 	$(CC) $(CCFLAGS) -o ../build/qsolve ../build/src/qsolve.o ../build/src/qsErrors.o ../build/src/qsHelp.o ../build/src/qsLog.o ../build/src/qsLogEnable.o
 
 run:
