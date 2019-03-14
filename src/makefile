@@ -42,6 +42,7 @@ clean:
 	# @cd qsResults; make clean
 	# @cd qsSolve; make clean
 	# @cd qsValidate; make clean
+	rm -rf *.o
 
 uTest:
 	# @cd qsErrors; make uTest
