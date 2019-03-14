@@ -4,6 +4,8 @@ CCFLAGS = -Wall -pedantic -std=c99
 #after copying all the .c's to the qs folder (main): -o *.c -lm
 
 build:
+	rm -rf ../build/src
+	rm -f ../build/qsolve
 	mkdir ../build; mkdir ../build/src
 	@cd qsErrors; make build; cp -f qsErrors.o ../../build/src/qsErrors.o
 	# @cd qsGetline; make build
