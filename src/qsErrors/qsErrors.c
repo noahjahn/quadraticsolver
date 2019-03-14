@@ -64,10 +64,10 @@ int qsErrors(char * msg, ...) {
                     break;
                 case 'c': // char
                     c = (char) va_arg(ap, int);
-                    // fprintf(fp, "%c", c);
+                    fprintf(fp, "%c", c);
                     // if (logging) {
                     //     sprintf(logmsg, "%c", c);
-                    }
+                    // }
                     break;
                 case 'f': // double
                     f = va_arg(ap, double);
