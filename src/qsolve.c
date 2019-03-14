@@ -50,14 +50,14 @@ int main(int argc, char const *argv[]) {
     } else if (argc > 2) {
         // if help char * wasn't passed in, tell the user the error
         // printf("ERROR: too many arguments. See ./qsolve help\n");
-        qsErrors("too many arguments. See ./qsolve help");
+        qsErrors("qsolve - main - too many arguments");
         ret = -102;
     }
 
     // if we didn't find an error with number of arguments, we can continue..
     if (ret == 0) {
         if (logging) {
-            qsLog("quadratic_solvers.c - argument counts okay %s", "test");
+            qsLog("qsolve.c - main - argument counts okay %s", "test");
         }
     } else {
         if (logging) {
