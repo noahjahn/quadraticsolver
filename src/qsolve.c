@@ -22,15 +22,33 @@ int logging = 0; // 0 is off 1 is on
 
 int main(int argc, char const *argv[]) {
 
+    //Declare system variables
+    int BUFFERSIZE = (sizeof(char)*10); //Size of the buffer we are using to catch user input
     int ret = 0; // return value for errors, start with being okay
-    double a = 0.0; double b = 0.0; double c = 0.0; // coefficients declared and initialized
+    double a; double b; double c; // coefficients declared and initialized
+    char *buffer; //the buffer to catch the user's input.
 
+    //Allocate memory for the buffer, and return error if malloc fails.
+    if(NULL == (line = malloc(BUFFERSIZE))) {
+        ; //ADD error handling for failed malloc
+    }
+
+    //Print startup text
     printf("Command Line Quadratic Equation Solver\n");
     printf("VERSION: %.2f\n", VERSION);
     printf("TEAM: Noah Jahn, Paul VanderWeele\n");
     printf("JKK Engineering - Kapenga\n");
     printf("LICENSE: GPL 2.0\n");
     printf("For help on how to use the program, see ./qsolve help\n\n");
+
+    //Prompt the user for input
+    //Catch and return the user's input
+    if(0 != qsGetLine(buffer, BUFFERSIZE)) {
+        ;//ADD error handling for failed user input read.
+    }
+
+
+/*Unsure of functionality beyond this point
 
     // check if arguments were supplied for a, b, and c
     if (argc == 2) {
@@ -64,6 +82,6 @@ int main(int argc, char const *argv[]) {
             qsLog("quadratic_solvers.c - INVALID ARGUMENTS");
         }
     }
-
+*/
     return ret;
 }
