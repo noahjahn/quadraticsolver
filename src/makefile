@@ -22,15 +22,15 @@ BUILD_OBJS_TEST = ../build/tqsolve ../build/src/tqsolve.o ../build/src/tqsErrors
 build:
 	rm -rf ../build/src
 	rm -f ../build/qsolve
-	mkdir ../build; mkdir ../build/src
+	mkdir ../build;		mkdir ../build/src
 	@cd qsErrors; 		make build
 	@cd qsGetline; 		make build
-	@cd qsHelp; 		make build
-	@cd qsLog; 			make build
+	@cd qsHelp; 			make build
+	@cd qsLog; 				make build
 	@cd qsLogEnable; 	make build
 	@cd qsPutline; 		make build
 	@cd qsResults; 		make build
-	@cd qsSolve; 		make build
+	@cd qsSolve; 			make build
 	@cd qsValidate; 	make build
 	make qsolve
 
@@ -50,31 +50,32 @@ runHelp:
 
 clean:
 	rm -rf ../build
+	rm -rf *.o
 	@cd qsErrors; 		make clean
 	@cd qsGetline; 		make clean
-	@cd qsHelp; 		make clean
-	@cd qsLog; 			make clean
+	@cd qsHelp; 			make clean
+	@cd qsLog; 				make clean
 	@cd qsLogEnable; 	make clean
 	@cd qsPutline; 		make clean
 	@cd qsResults; 		make clean
-	@cd qsSolve; 		make clean
+	@cd qsSolve; 			make clean
 	@cd qsValidate; 	make clean
 
 #Must be run AFTER build
-#Example: 
+#Example:
 #~$ make clean build test
 #or
 #~$ make clean build -log
 #~$ make test
 test:
-	@cd qsErrors;		make test;
+	@cd qsErrors;			make test;
 	@cd qsGetline; 		make test;
-	@cd qsHelp; 		make test;
-	@cd qsLog; 			make test;
+	@cd qsHelp; 			make test;
+	@cd qsLog; 				make test;
 	@cd qsLogEnable; 	make test;
 	@cd qsPutline; 		make test;
 	@cd qsResults; 		make test;
-	@cd qsSolve; 		make test;
+	@cd qsSolve; 			make test;
 	@cd qsValidate; 	make test;
 	make tqsolve
 
