@@ -1,9 +1,11 @@
-/*
-    Command Line Quadratic Equation Solver
-    TEAM: Noah Jahn, Paul VanderWeele
-    JKK Engineering - Kapenga
-    LICENSE: GPL 2.0
-*/
+/*****************************************************************
+Command Line Quadratic Equation Solver
+TEAM: Noah Jahn, Paul VanderWeele
+JKK Engineering - Kapenga
+LICENSE: GPL 2.0
+
+Main controller for the quadratic solver.
+*****************************************************************/
 
 #define VERSION 0.40
 
@@ -17,7 +19,7 @@
 int logging = 0; // 0 is off 1 is on
 
 /*
-    Controller for the program. This is where the program starts.
+    This is where the program starts.
 */
 
 int main(int argc, char const *argv[]) {
@@ -41,14 +43,6 @@ int main(int argc, char const *argv[]) {
     printf("LICENSE: GPL 2.0\n");
     printf("For help on how to use the program, see ./qsolve help\n\n");
 
-    //Prompt the user for input
-    //Catch and return the user's input
-    if(0 != qsGetLine(buffer, BUFFERSIZE)) {
-        ;//ADD error handling for failed user input read.
-    }
-
-
-/*Unsure of functionality beyond this point
 
     // check if arguments were supplied for a, b, and c
     if (argc == 2) {
@@ -82,6 +76,19 @@ int main(int argc, char const *argv[]) {
             qsLog("quadratic_solvers.c - INVALID ARGUMENTS");
         }
     }
-*/
+
+    //Prompt the user for input
+    //Catch and return the user's input
+    if(0 != qsGetLine(buffer, BUFFERSIZE)) {
+        ;//ADD error handling for failed user input read.
+    }
+
+    //Validate the input
+    //Parse out and assign a, b, and c
+    if(0 != qsValidate()) {
+        ;//ADD error handling for failed validation.
+    } 
+
+
     return ret;
 }
