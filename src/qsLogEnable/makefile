@@ -1,5 +1,5 @@
 CC = gcc
-CCFLAGS = -Wall -pedantic
+CCFLAGS = -Wall -pedantic -std=c99
 DEP = qsLogEnable.h
 BUILD_OBJS = $(DEP) qsLogEnable.c
 TEST_OBJS = qsLogEnable.o tqsLogEnable.c

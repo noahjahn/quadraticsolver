@@ -48,7 +48,7 @@ int logging = 0; // 0 is off 1 is on
 int main(int argc, char const *argv[]) {
 
     //Declare system variables
-	int error = 0; //Successful
+    int error = 0; //Successful
     int BUFFERSIZE = (sizeof(char)*50); //Size of the buffer we are using to catch user input
     double a; double b; double c; // coefficients declared and initialized
     char *buffer; //the buffer to catch the user's input.
@@ -85,14 +85,14 @@ int main(int argc, char const *argv[]) {
     } else if (argc > 2) {
         // if help char * wasn't passed in, tell the user the error
         // printf("ERROR: too many arguments. See ./qsolve help\n");
-        qsErrors("too many arguments. See ./qsolve help");
+        qsErrors("qsolve - main - too many arguments");
         error = -102;
     }
 
     // if we didn't find an error with number of arguments, we can continue..
     if (error == 0) {
         if (logging) {
-            qsLog("quadratic_solvers.c - argument counts okay %s", "test");
+            qsLog("qsolve.c - main - argument counts okay %s", "test");
         }
     } else {
         if (logging) {

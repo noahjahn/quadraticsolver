@@ -1,5 +1,5 @@
 CC = gcc
-CCFLAGS = -Wall -pedantic
+CCFLAGS = -Wall -pedantic -std=c99
 
 #Dependant files required to compile the main controller.
 DEP_OBJS = qsolve.o qsErrors/qsErrors.o qsGetline/qsGetline.o qsHelp/qsHelp.o qsLog/qsLog.o qsLogEnable/qsLogEnable.o \
@@ -20,6 +20,8 @@ BUILD_OBJS_TEST = ../build/tqsolve ../build/src/tqsolve.o ../build/src/tqsErrors
 #after copying all the .c's to the qs folder (main): -o *.c -lm
 
 build:
+	rm -rf ../build/src
+	rm -f ../build/qsolve
 	mkdir ../build; mkdir ../build/src
 	@cd qsErrors; 		make build
 	@cd qsGetline; 		make build

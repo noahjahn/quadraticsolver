@@ -43,12 +43,13 @@ int qsLog(char * msg, ...) {
     FILE * fp; // create file pointer
     fp = fopen(LOG_PATH, "a+"); // a+ opens for append and creates if not exist
 
+    time_t t = time(NULL);
+    struct tm time = *localtime(&t);
+
     // log that we are in the log function
     fprintf(fp, "%d-%d-%d %d:%d:%d - qsLog.c - qsLog - Parameters: %s\n", (time.tm_year + 1900), (time.tm_mon + 1), time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec, msg);
 
     // print current date and time to log file
-    time_t t = time(NULL);
-    struct tm time = *localtime(&t);
     fprintf(fp, "%d-%d-%d %d:%d:%d - ", (time.tm_year + 1900), (time.tm_mon + 1), time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec);
 
     va_list ap; // varying arguments list
