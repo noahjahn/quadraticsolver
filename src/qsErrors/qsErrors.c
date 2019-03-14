@@ -26,8 +26,8 @@ Returns whether an error occurred or not.
 
 #define LOG_PATH "../build/errors.txt"
 
-int qsErrors(char * log, ...) {
-	int error = 0; //Successful
+int qsErrors(char * msg, ...) {
+	int ret = 0; //Successful
 
     if (logging) {
         qsLog("qsErrors.c - qsErrors - argument passed in %s\n", msg);
@@ -100,9 +100,9 @@ int qsErrors(char * log, ...) {
     //
     // }
 
-<<<<<<< HEAD
-    return error;
-=======
-    return ret;
->>>>>>> b663a8b216c297015903f191cc674bf073c9294b
+// <<<<<<< HEAD
+//     return ret;
+// =======
+//     return ret;
+// >>>>>>> b663a8b216c297015903f191cc674bf073c9294b
 }
