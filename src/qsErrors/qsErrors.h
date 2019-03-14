@@ -9,4 +9,4 @@
     Prints passed in message to error file located in build directory
 */
 
-int qsErrors(char * log);
+int qsErrors(char * log, ...);
