@@ -1,9 +1,31 @@
-/*
-    Command Line Quadratic Equation Solver
-    TEAM: Noah Jahn, Paul VanderWeele
-    JKK Engineering - Kapenga
-    LICENSE: GPL 2.0
-*/
+/*****************************************************************
+Command Line Quadratic Equation Solver
+TEAM: Noah Jahn, Paul VanderWeele
+JKK Engineering - Kapenga
+LICENSE: GPL 2.0
+
+Prints passed in message to log file located in build directory. The function
+can also except a few different format specifiers
+
+%s - char *
+%d - int
+%c - char
+%f - double
+
+**Input**
+msg - The message that should be output to the log.
+... - Variables for above four format specifiers.
+
+**Output** 
+Returns whether an error occurred or not.
+0 	- Successful
+1 	- Unsuccessful
+2+ 	- Undefined
+
+**Example**
+char * parameter = "test";
+qsLog("This is my log message. Parameter: %s", parameter);
+*****************************************************************/
 
 #include <stdio.h>
 #include <stdarg.h>
@@ -12,32 +34,11 @@
 
 #define LOG_PATH "../build/log.txt"
 
-/*
-    Prints passed in message to log file located in build directory. The function
-    can also except a few different format specifiers
 
-    %s - char *
-    %d - int
-    %c - char
-    %f - double
-
-    Input:
-        qsLog(char * msg, ...);
-        msg - the message that should be output to the log
-        ... variables for above four format specifiers
-
-    Output:
-        0   - if successful
-        -1  - on error
-
-    Example:
-        char * parameter = "test";
-        qsLog("This is my log message. Parameter: %s", parameter);
-*/
 
 int qsLog(char * msg, ...) {
 
-    int ret = 0; // start with being okay
+    int error = 0; //Successful
 
     FILE * fp; // create file pointer
     fp = fopen(LOG_PATH, "a+"); // a+ opens for append and creates if not exist
@@ -85,6 +86,6 @@ int qsLog(char * msg, ...) {
 
     fclose(fp); // close the file pointer
 
-    return ret;
+    return error;
 
 }
