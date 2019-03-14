@@ -2,24 +2,24 @@
 Command Line Quadratic Equation Solver
 TEAM: Noah Jahn, Paul VanderWeele
 JKK Engineering - Kapenga
-LICENSE: GPL 2.0
+LICENSE: GPL 3.0
 
 Testing module for the quadratic solver.
 
 **Input**
-argc - Number of inputs: 
-    1) no help 
+argc - Number of inputs:
+    1) no help
     2) help or logging
     Other) Error
-arcv[] - Input string. 
+arcv[] - Input string.
     [0] name of program
     [1] "help" or "-log"
     [2+] NULL, otherwise input error
 
-**Output** 
+**Output**
 Returns whether an error occurred or not.
 0   - Successful
-1   - Unsuccessful
+-1   - Unsuccessful
 2+  - Undefined
 *****************************************************************/
 

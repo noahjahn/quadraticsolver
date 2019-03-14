@@ -2,7 +2,7 @@
 Command Line Quadratic Equation Solver
 TEAM: Noah Jahn, Paul VanderWeele
 JKK Engineering - Kapenga
-LICENSE: GPL 2.0
+LICENSE: GPL 3.0
 
 Prints passed in message to log file located in build directory. The function
 can also except a few different format specifiers
@@ -16,10 +16,10 @@ can also except a few different format specifiers
 msg - The message that should be output to the log.
 ... - Variables for above four format specifiers.
 
-**Output** 
+**Output**
 Returns whether an error occurred or not.
 0 	- Successful
-1 	- Unsuccessful
+-1 	- Unsuccessful
 2+ 	- Undefined
 
 **Example**

@@ -2,7 +2,7 @@
 Command Line Quadratic Equation Solver
 TEAM: Noah Jahn, Paul VanderWeele
 JKK Engineering - Kapenga
-LICENSE: GPL 2.0
+LICENSE: GPL 3.0
 
 Takes a line of user input, and parses it for a, b, and c values.
 
@@ -10,10 +10,10 @@ Takes a line of user input, and parses it for a, b, and c values.
 line 	- Buffer to catch user input.
 nline 	- Length of buffer passed from main program.
 
-**Output** 
+**Output**
 Returns whether an error occurred or not.
 0 	- Successful
-1 	- Unsuccessful
+-1 	- Unsuccessful
 2+ 	- Undefined
 
 *****************************************************************/

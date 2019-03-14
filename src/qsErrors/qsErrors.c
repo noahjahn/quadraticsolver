@@ -2,18 +2,18 @@
 Command Line Quadratic Equation Solver
 TEAM: Noah Jahn, Paul VanderWeele
 JKK Engineering - Kapenga
-LICENSE: GPL 2.0
+LICENSE: GPL 3.0
 
 Prints passed in message to error file located in build directory erros.txt.
 This function will also handle telling the user the error
 
 **Input**
-log - 
+log -
 
-**Output** 
+**Output**
 Returns whether an error occurred or not.
 0 	- Successful
-1 	- Unsuccessful
+-1 	- Unsuccessful
 2+ 	- Undefined
 
 *****************************************************************/
