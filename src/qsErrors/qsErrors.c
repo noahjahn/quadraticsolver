@@ -5,6 +5,9 @@
     LICENSE: GPL 2.0
 */
 
+#include <stdio.h>
+#include <stdarg.h>
+#include <time.h>
 #include "qsErrors.h"
 #include "../qsLog/qsLog.h"
 
@@ -36,9 +39,9 @@ int qsErrors(char * msg, ...) {
     int d; double f;
     char c, *s;
 
-    if (logging) {
-        sprintf(logmsg, "ERROR: ");
-    }
+    // if (logging) {
+    //     sprintf(logmsg, "ERROR: ");
+    // }
 
     va_start(ap, msg);
     while (*msg) {
@@ -48,37 +51,37 @@ int qsErrors(char * msg, ...) {
                 case 's': // string
                     s = va_arg(ap, char *);
                     fprintf(fp, "%s", s);
-                    if (logging) {
-                        sprintf(logmsg, "%s", s);
-                    }
+                    // if (logging) {
+                    //     sprintf(logmsg, "%s", s);
+                    // }
                     break;
                 case 'd': // int
                     d = va_arg(ap, int);
                     fprintf(fp, "%d", d);
-                    if (logging) {
-                        sprintf(logmsg, "%d", d);
-                    }
+                    // if (logging) {
+                    //     sprintf(logmsg, "%d", d);
+                    // }
                     break;
                 case 'c': // char
                     c = (char) va_arg(ap, int);
-                    fprintf(fp, "%c", c);
-                    if (logging) {
-                        sprintf(logmsg, "%c", c);
+                    // fprintf(fp, "%c", c);
+                    // if (logging) {
+                    //     sprintf(logmsg, "%c", c);
                     }
                     break;
                 case 'f': // double
                     f = va_arg(ap, double);
                     fprintf(fp, "%f", f);
-                    if (logging) {
-                        sprintf(logmsg, "%f", f);
-                    }
+                    // if (logging) {
+                    //     sprintf(logmsg, "%f", f);
+                    // }
                     break;
             }
         } else {
             fprintf(fp, "%c", *msg);
-            if (logging) {
-                sprintf(logmsg, "%c", *msg);
-            }
+            // if (logging) {
+            //     sprintf(logmsg, "%c", *msg);
+            // }
         }
         *msg++;
     }
@@ -86,9 +89,9 @@ int qsErrors(char * msg, ...) {
 
     fclose(fp); // close the file pointer
 
-    if (logging) {
-
-    }
+    // if (logging) {
+    //
+    // }
 
     return ret;
 }
