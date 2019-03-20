@@ -21,9 +21,9 @@ Returns whether an error occurred or not.
 -301 	-
 -300 	-
 -302 	-
-0   	- Successful
 -1   	- Unsuccessful
-2+  	- Undefined
+0   	- Successful
+1+  	- Undefined
 *****************************************************************/
 
 #define VERSION 0.40
@@ -52,11 +52,6 @@ int main(int argc, char const *argv[]) {
     int BUFFERSIZE = (sizeof(char)*50); //Size of the buffer we are using to catch user input
     double a; double b; double c; // coefficients declared and initialized
     char *buffer; //the buffer to catch the user's input.
-
-    //Allocate memory for the buffer, and return error if malloc fails.
-    if(NULL == (buffer = malloc(BUFFERSIZE))) {
-        error = 1; //Unsuccessful
-    }
 
     //Print startup text
     printf("Command Line Quadratic Equation Solver\n");
@@ -100,6 +95,16 @@ int main(int argc, char const *argv[]) {
         }
     }
 
+    //Allocate memory for the buffer, and return error if malloc fails.
+    if(NULL == (buffer = malloc(BUFFERSIZE))) {
+        error = -1; //Unsuccessful
+    }
+
+    if(0 != (error = qsGetline(buffer, BUFFERSIZE))) {
+    	; //Add error handling. Are we using "Go-To end" or something similiar?
+    }
+
+    printf("**TEST** The coefficients you entered are: %s\n", buffer);
     //Close resources
     free(buffer);
 
