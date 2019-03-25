@@ -26,22 +26,22 @@ int qsGetline(char *line, int nline) {
 
 	//Validate input
 	if(!line) {
-		error = 1; //Unsuccessful
+		error = -1; //Unsuccessful
 	}
 	if(!nline) {
-		error = 1; //Unsuccessful
+		error = -1; //Unsuccessful
 	}
+	else {
+		//Prompt user for inputting a, b, and c
+		printf("Please enter quadratic coefficients a, b, and c seperated by commas\n");
+		printf("a, b, c: ");
 
-	//Prompt user for inputting a, b, and c
-	printf("Please enter quadratic coefficients a, b, and c seperated by commas\n");
-	printf("a, b, c: ");
-
-	//Catch user input
-	//"%[^\n]" reads characters until a \n is found
-	if(0 == scanf("%[^\n]", line)){
-		error = 1;//Unsuccessful
+		//Catch user input
+		//"%[^\n]" reads characters until a \n is found
+		if(0 == scanf("%[^\n]", line)){
+			error = 1;//Unsuccessful
+		}
 	}
-
 	return error;
 
 }

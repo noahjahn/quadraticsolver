@@ -15,16 +15,18 @@ c - Coefficient of the constant term.
 
 **Output**
 Returns whether an error occurred or not.
-0 	- Successful
 -1 	- Unsuccessful
-2+ 	- Undefined
+0 	- Successful
+1+ 	- Undefined
 *****************************************************************/
 
 #include "qsValidate.h"
 
 int qsValidate(char *line, int nline,
     double *a, double *b, double *c) {
-	int error = 1; //Successful
+	int error = 0; //Successful
+
+	
 
 	return error;
 }
