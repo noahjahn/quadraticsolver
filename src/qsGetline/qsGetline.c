@@ -28,7 +28,7 @@ int qsGetline(char *line, int nline) {
 	if(!line) {
 		error = -1; //Unsuccessful
 	}
-	if(!nline) {
+	else if(!nline) {
 		error = -1; //Unsuccessful
 	}
 	else {
