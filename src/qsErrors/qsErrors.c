@@ -8,7 +8,8 @@ Prints passed in message to error file located in build directory erros.txt.
 This function will also handle telling the user the error
 
 **Input**
-log -
+msg - error message to print out to the file.
+... - format specifiers if sent in with the msg.
 
 **Output**
 Returns whether an error occurred or not.
@@ -30,7 +31,7 @@ int qsErrors(char * msg, ...) {
 	int ret = 0; //Successful
 
     if (logging) {
-        qsLog("qsErrors.c - qsErrors - argument passed in %s\n", msg);
+        qsLog("qsErrors.c - qsErrors - Entered new function, argument passed in: %s\n", msg);
     }
 
     FILE * fp; // create file pointer
@@ -46,9 +47,9 @@ int qsErrors(char * msg, ...) {
     int d; double f;
     char c, *s;
 
-    // if (logging) {
-    //     sprintf(logmsg, "ERROR: ");
-    // }
+    if (logging) {
+        sprintf(logmsg, "ERROR: ");
+    }
 
     va_start(ap, msg);
     while (*msg) {
@@ -58,37 +59,37 @@ int qsErrors(char * msg, ...) {
                 case 's': // string
                     s = va_arg(ap, char *);
                     fprintf(fp, "%s", s);
-                    // if (logging) {
-                    //     sprintf(logmsg, "%s", s);
-                    // }
+                    if (logging) {
+                        sprintf(logmsg, "%s", s);
+                    }
                     break;
                 case 'd': // int
                     d = va_arg(ap, int);
                     fprintf(fp, "%d", d);
-                    // if (logging) {
-                    //     sprintf(logmsg, "%d", d);
-                    // }
+                    if (logging) {
+                        sprintf(logmsg, "%d", d);
+                    }
                     break;
                 case 'c': // char
                     c = (char) va_arg(ap, int);
                     fprintf(fp, "%c", c);
-                    // if (logging) {
-                    //     sprintf(logmsg, "%c", c);
-                    // }
+                    if (logging) {
+                        sprintf(logmsg, "%c", c);
+                    }
                     break;
                 case 'f': // double
                     f = va_arg(ap, double);
                     fprintf(fp, "%f", f);
-                    // if (logging) {
-                    //     sprintf(logmsg, "%f", f);
-                    // }
+                    if (logging) {
+                        sprintf(logmsg, "%f", f);
+                    }
                     break;
             }
         } else {
             fprintf(fp, "%c", *msg);
-            // if (logging) {
-            //     sprintf(logmsg, "%c", *msg);
-            // }
+            if (logging) {
+                sprintf(logmsg, "%c", *msg);
+            }
         }
         *msg++;
     }
@@ -96,13 +97,5 @@ int qsErrors(char * msg, ...) {
 
     fclose(fp); // close the file pointer
 
-    // if (logging) {
-    //
-    // }
-
-// <<<<<<< HEAD
-//     return ret;
-// =======
-//     return ret;
-// >>>>>>> b663a8b216c297015903f191cc674bf073c9294b
+	return ret;
 }
