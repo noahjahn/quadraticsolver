@@ -42,7 +42,7 @@ int qsErrors(char * msg, ...) {
     struct tm time = *localtime(&t);
     fprintf(fp, "%d-%d-%d %d:%d:%d - ERROR: ", (time.tm_year + 1900), (time.tm_mon + 1), time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec);
 
-    char * logmsg;
+    char logmsg[256];
     va_list ap; // varying arguments list
     int d; double f;
     char c, *s;
