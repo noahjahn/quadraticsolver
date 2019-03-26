@@ -10,8 +10,9 @@ Determines what the roots of the quadratic means.
 
 **Output**
 Returns whether an error occurred or not.
--3 	- argument out of range
--2 	- NULL a argument
+-4 	- argument c out of range
+-3 	- argument b out of range
+-2 	- argument a out of range
 -1 	- Internal error
 2	- No real roots
 3	- One real root
@@ -23,7 +24,7 @@ Returns whether an error occurred or not.
 #include "qsSolve.h"
 #include "../qsLog/qsLog.h"
 
-int qsSolve(double a, double b, double c, double *x1, double *x2) {
+int qsSolve(double a, double b, double c, double * x1, double * x2) {
 	int error = 0; //Successful
 
 	if (logging) {
@@ -31,30 +32,31 @@ int qsSolve(double a, double b, double c, double *x1, double *x2) {
 	}
 
 	// Validate input
-	if (NULL == a) {
-		if (logging) {
-			qsLog("qsSolve.c - qsSolve - Argument a is NULL\n");
-		}
-		error = -2;
-	} else if (a > (3.4 * pow(10,38)) || a < (-3.4 * pow(10,38))) {
+	if (a > (3.4 * pow(10,38)) || a < (-3.4 * pow(10,38))) {
 		if (logging) {
 			qsLog("qsSolve.c - qsSolve - Argument a is out of range\n");
 		}
+		qsErrors("qsSolve.c - qsSolve - Argument a is out of range\n");
+		error = -2;
+	}
+	if (b > (3.4 * pow(10,38)) || a < (-3.4 * pow(10,38))) {
+		if (logging) {
+			qsLog("qsSolve.c - qsSolve - Argument b is out of range\n");
+		}
+		qsErrors("qsSolve.c - qsSolve - Argument b is out of range\n");
 		error = -3;
 	}
-		if (NULL == b) {
-			error = -5;
-		} else if (b > (3.4 * pow(10,38))) {
-			error = -6;
-		} else if (b < (-3.4 * pow(10,38))) {
-			error = -7;
+	if (c > (3.4 * pow(10,38)) || a < (-3.4 * pow(10,38))) {
+		if (logging) {
+			qsLog("qsSolve.c - qsSolve - Argument c is out of range\n");
 		}
-
+		qsErrors("qsSolve.c - qsSolve - Argument c is out of range\n");
+		error = -4;
 	}
 
 	// reset x1 and x2, they shouldn't have anything stored in them
-	*(x1) = NULL;
-	*(x2) = NULL;
+	*x1 = 0.00;
+	*x2 = 0.00;
 
 
 	double radicand = (b * b) - (4 * a * c);
