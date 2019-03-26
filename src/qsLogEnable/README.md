@@ -7,11 +7,34 @@ for Western Michigan Universities Computer Science program. Two students practic
 the extreme programming agile methodology.
 
 ## This directory: src/qsLogEnable
+
+The qsLogEnable function lives in this directory. It is used to enable  logging throughout the system.
+
+### Input
+
+The address of the global logging integer
+
+### Output
+
+Changes the global logging integer to 1 for logging on.
+
+Returns whether an error occurred or not.
+0 	- Successful
+-1 	- Unsuccessful
+2+ 	- Undefined
+
 ### Building the function
+
+Run ```make build``` in this folder.
 
 ### Running the function
 
+The object file qsLogEnable.o should be linked to an executable. Any c file that uses the
+function qsLogEnable() should include qsLogEnable.h header file ```#include "qsLogEnable.h"```.
+
 ### Testing the function
+
+Run ```make test``` in this folder.
 
 ## Coding Standards
 

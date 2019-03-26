@@ -8,11 +8,32 @@ the extreme programming agile methodology.
 
 ## This directory: src/qsHelp
 
+The qsHelp function lives in this directory. It is used to print help instructions
+to the user when the ```help``` argument is passed in. The directory includes the
+header to include the function in another program file with same name as the function name.
+
+### Input
+
+No input should be passed to this function, it's purely for outputting help for the user.
+
+### Output
+
+The function prints to the command line the help instructions.
+
+If the function is successful, it returns ```0```, on failure ```-1``` else it's undefined.
+
 ### Building the function
+
+Run ```make build``` in this folder.
 
 ### Running the function
 
+The object file qsHelp.o should be linked to an executable. Any c file that uses the
+function qsHelp() should include qsHelp.h header file ```#include "qsHelp.h"```.
+
 ### Testing the function
+
+Run ```make test``` in this folder.
 
 ## Coding Standards
 

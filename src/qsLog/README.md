@@ -8,11 +8,40 @@ the extreme programming agile methodology.
 
 ## This directory: src/qsLog
 
+The qsLog function lives in this directory. It is used to print the passed in message to log file located in the build directory. The function
+can also accept a few different format specifiers
+
+%s - char *
+%d - int
+%c - char
+%f - double
+
+### Input
+
+msg - The message that should be output to the log.
+... - Variables for above four format specifiers.
+
+### Output
+
+Appends the message to the log file specified by the LOG_PATH definition.
+
+Returns whether an error occurred or not.
+0 	- Successful
+-1 	- Unsuccessful
+2+ 	- Undefined
+
 ### Building the function
+
+Run ```make build``` in this folder.
 
 ### Running the function
 
+The object file qsLog.o should be linked to an executable. Any c file that uses the
+function qsLog() should include qsLog.h header file ```#include "qsLog.h"```.
+
 ### Testing the function
+
+Run ```make test``` in this folder.
 
 ## Coding Standards
 

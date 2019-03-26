@@ -8,11 +8,33 @@ the extreme programming agile methodology.
 
 ## This directory: src/qsResults
 
+The qsResults function lives in this directory. It is used to determine what the roots of the quadratic equation means.
+
+### Input
+
+The integer returned by the qsSolve function, the address of x1 and x2.
+
+### Output
+
+Prints to the user what the results are.
+
+Returns whether an error occurred or not.
+0 	- Successful
+-1 	- Unsuccessful
+2+ 	- Undefined
+
 ### Building the function
+
+Run ```make build``` in this folder.
 
 ### Running the function
 
+The object file qsResults.o should be linked to an executable. Any c file that uses the
+function qsResults() should include qsResults.h header file ```#include "qsResults.h"```.
+
 ### Testing the function
+
+Run ```make test``` in this folder.
 
 ## Coding Standards
 

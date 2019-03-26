@@ -8,11 +8,34 @@ the extreme programming agile methodology.
 
 ## This directory: src/qsGetline
 
+The qsGetline function lives in this directory. It takes a line of user input and parses it for a, b, and c values. The tqsGetline function also lives in this directory and is used for running tests on the qsGetline function.
+
+### Input
+
+line 	- Buffer to catch user input.
+nline 	- Length of buffer passed from main program.
+
+### Output
+
+This function stores the user input in the char * line passed in to the function.
+
+Returns whether an error occurred or not.
+0 	- Successful
+-1 	- Unsuccessful
+2+ 	- Undefined
+
 ### Building the function
+
+Run ```make build``` in this folder.
 
 ### Running the function
 
+The object file qsGetline.o should be linked to an executable. Any c file that uses the
+function qsGetline() should include qsGetline.h header file ```#include "qsGetline.h"```.
+
 ### Testing the function
+
+Run ```make test``` in this folder.
 
 ## Coding Standards
 

@@ -8,11 +8,32 @@ the extreme programming agile methodology.
 
 ## This directory: src/qsPutline
 
+The qsPutline function lives in this directory. It is used to determine what the roots of the quadratic means.
+
+### Input
+
+char * line - the input line from the user.
+int nline - the integer of the number of lines of the char * line.
+
+### Output
+
+Returns whether an error occurred or not.
+0 	- Successful
+-1 	- Unsuccessful
+2+ 	- Undefined
+
 ### Building the function
+
+Run ```make build``` in this folder.
 
 ### Running the function
 
+The object file qsPutline.o should be linked to an executable. Any c file that uses the
+function qsPutline() should include qsPutline.h header file ```#include "qsPutline.h"```.
+
 ### Testing the function
+
+Run ```make test``` in this folder.
 
 ## Coding Standards
 
