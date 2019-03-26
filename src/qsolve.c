@@ -100,8 +100,15 @@ int main(int argc, char const *argv[]) {
         error = -1; //Unsuccessful
     }
 
+    //Ask the user for input, and read a line.
     if(0 != (error = qsGetline(buffer, BUFFERSIZE))) {
-    	; //Add error handling. Are we using "Go-To end" or something similiar?
+    	printf("Failed to scan user input");
+    	exit(EXIT_FAILURE); //exit as unsuccessful
+    }
+
+    if(0 != (error = qsValidate(buffer, BUFFERSIZE, a, b, c))) {
+    	printf("Failed to validate user input");
+    	exit(EXIT_FAILURE); //exit as unsuccessful
     }
 
     printf("**TEST** The coefficients you entered are: %s\n", buffer);

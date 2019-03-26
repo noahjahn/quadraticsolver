@@ -25,12 +25,12 @@ build:
 	mkdir ../build;		mkdir ../build/src
 	@cd qsErrors; 		make build
 	@cd qsGetline; 		make build
-	@cd qsHelp; 			make build
-	@cd qsLog; 				make build
+	@cd qsHelp; 		make build
+	@cd qsLog; 			make build
 	@cd qsLogEnable; 	make build
 	@cd qsPutline; 		make build
 	@cd qsResults; 		make build
-	@cd qsSolve; 			make build
+	@cd qsSolve; 		make build
 	@cd qsValidate; 	make build
 	make qsolve
 

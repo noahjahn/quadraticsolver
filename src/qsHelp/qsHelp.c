@@ -36,12 +36,11 @@ int qsHelp() {
     printf("LICENSE: GPL 2.0\n");
     printf("For help on how to use the program, see ./qsolve help\n\n");
 
-    printf("Please enter a value for a:\n5.0\n");
-    printf("Please enter a value for b:\n6.0\n");
-    printf("Please enter a value for c:\n1.0\n");
+    printf("Please enter quadratic coefficients a, b, and c seperated by commas\n");
+    printf("a, b, c: 2.0, 4.0, -2\n\n")
 
-    printf("Results x = -(1/5), -1");
-
+    printf("Results x = {0.414214, -2.41421}\n");
+    
     printf("\n\nTo enable logging run with the -log flag:\n./qsolve -log\n");
 
     return error;
