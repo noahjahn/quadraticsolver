@@ -34,8 +34,6 @@ qsLog("This is my log message. Parameter: %s", parameter);
 
 #define LOG_PATH "../build/log.txt"
 
-
-
 int qsLog(char * msg, ...) {
 
     int error = 0; //Successful
@@ -47,7 +45,7 @@ int qsLog(char * msg, ...) {
     struct tm time = *localtime(&t);
 
     // log that we are in the log function
-    fprintf(fp, "%d-%d-%d %d:%d:%d - qsLog.c - qsLog - Parameters: %s\n", (time.tm_year + 1900), (time.tm_mon + 1), time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec, msg);
+    // fprintf(fp, "%d-%d-%d %d:%d:%d - qsLog.c - qsLog - Parameters: %s\n", (time.tm_year + 1900), (time.tm_mon + 1), time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec, msg);
 
     // print current date and time to log file
     fprintf(fp, "%d-%d-%d %d:%d:%d - ", (time.tm_year + 1900), (time.tm_mon + 1), time.tm_mday, time.tm_hour, time.tm_min, time.tm_sec);
