@@ -23,7 +23,12 @@ Returns whether an error occurred or not.
 -302 	-
 -1   	- Unsuccessful
 0   	- Successful
-1+  	- Undefined
+1  	  - Bad Input
+2     - Double real root
+3     - Two real roots
+4     - No Real roots
+5     - Internal ERROR
+6     - Loss of Significance
 *****************************************************************/
 
 #define VERSION 0.40
@@ -111,6 +116,7 @@ int main(int argc, char const *argv[]) {
     double *a; double *b; double *c; // coefficients declared and initialized
     char *buffer; //the buffer to catch the user's input.
     bool hasSigLoss;
+    int results;
 
     //Allocate memory for the buffer, and return error if malloc fails.
     if(NULL == (buffer = malloc(BUFFERSIZE))) {
@@ -146,11 +152,17 @@ int main(int argc, char const *argv[]) {
     /***************************************************************************
         Perform quadratic operation.
     ***************************************************************************/
+    //** qsSolve **//
+    if(-1 == (error = qsSolve(a, b, c, x1, x2))) {
+      exit(EXIT_FAILURE);
+    }
 
     /***************************************************************************
         Determine results.
     ***************************************************************************/
-
+    if(-1 == (error = qsResults())) {
+      exit(EXIT_FAILURE);
+    }
     /***************************************************************************
         Output results to user.
     ***************************************************************************/
