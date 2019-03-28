@@ -8,13 +8,13 @@ build: qsSolve.o
 	cp -f qsSolve.o ../../build/src/qsSolve.o
 
 qsSolve.o: $(BUILD_OBJS)
-	$(CC) $(CCFLAGS) -c qsSolve.c
+	$(CC) $(CCFLAGS) -c qsSolve.c -lm
 
 test: tqsSolve.o
 	cp -f tqsSolve.o ../../build/src/tqsSolve.o
 
 tqsSolve.o: $(TEST_OBJS)
-	$(CC) $(CCFLAGS) -c tqsSolve.c
+	$(CC) $(CCFLAGS) -c tqsSolve.c -lm
 
 clean:
 	rm -rf *.o
