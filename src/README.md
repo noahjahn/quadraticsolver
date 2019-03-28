@@ -8,9 +8,20 @@ the extreme programming agile methodology.
 
 ## This directory: src
 
+Contains all the functions of the program divided in to their own folder.
+
 ### Building the program
 
+Each directory contains a makefile that will build function in that directory.
+Running ```make build``` in the root of the project repository will build each written
+function by calling ```make build``` in the src directory, which runs ```make build```
+in each sub-directory, which builds functions.
+
 ### Running the program
+
+Each directory contains a makefile that will build function in that directory.
+Running ```make run``` in the root of the project repository will run the linked object
+files from each built function. The object and executable live in the /build directory
 
 ## Running the tests
 
