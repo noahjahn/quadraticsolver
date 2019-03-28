@@ -2,7 +2,7 @@ CC = gcc
 CCFLAGS = -Wall -pedantic
 DEP = qsSolve.h
 BUILD_OBJS = $(DEP) qsSolve.c
-TEST_OBJS = qsSolve.o tqsSolve.c
+TEST_OBJS = $(DEP) qsSolve.o tqsSolve.c
 
 build: qsSolve.o
 	cp -f qsSolve.o ../../build/src/qsSolve.o

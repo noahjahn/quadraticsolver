@@ -2,7 +2,7 @@ CC = gcc
 CCFLAGS = -Wall -pedantic
 DEP = qsPutline.h
 BUILD_OBJS = $(DEP) qsPutline.c
-TEST_OBJS = qsPutline.o tqsPutline.c
+TEST_OBJS = $(DEP) qsPutline.o tqsPutline.c
 
 build: qsPutline.o
 	cp -f qsPutline.o ../../build/src/qsPutline.o

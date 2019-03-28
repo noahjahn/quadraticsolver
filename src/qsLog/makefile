@@ -2,7 +2,7 @@ CC = gcc
 CCFLAGS = -Wall -pedantic -std=c99
 DEP = qsLog.h
 BUILD_OBJS = $(DEP) qsLog.c
-TEST_OBJS = qsLog.o tqsLog.c
+TEST_OBJS = $(DEP) qsLog.o tqsLog.c
 
 build: qsLog.o
 	cp -f qsLog.o ../../build/src/qsLog.o

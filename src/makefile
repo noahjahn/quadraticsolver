@@ -14,7 +14,7 @@ BUILD_OBJS =  ../build/src/qsolve.o ../build/src/qsErrors.o ../build/src/qsHelp.
 ../build/src/qsLogEnable.o ../build/src/qsValidate.o ../build/src/qsGetline.o ../build/src/qsPutline.o ../build/src/qsResults.o
 
 #ADDITIONAL files required to link the program if we are testing.
-BUILD_OBJS_TEST = ../build/tqsolve ../build/src/tqsolve.o ../build/src/tqsErrors.o ../build/src/tqsHelp.o ../build/src/tqsLog.o \
+BUILD_OBJS_TEST = ../build/qsolve ../build/src/tqsolve.o ../build/src/tqsErrors.o ../build/src/tqsHelp.o ../build/src/tqsLog.o \
 ../build/src/tqsLogEnable.o ../build/src/tqsValidate.o ../build/src/tqsGetline.o ../build/src/tqsPutline.o ../build/src/tqsResults.o
 
 #after copying all the .c's to the qs folder (main): -o *.c -lm

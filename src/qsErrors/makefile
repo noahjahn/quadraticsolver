@@ -2,7 +2,7 @@ CC = gcc
 CCFLAGS = -Wall -pedantic -std=c99
 DEP = qsErrors.h
 BUILD_OBJS = $(DEP) qsErrors.c
-TEST_OBJS = qsErrors.o tqsErrors.c
+TEST_OBJS = $(DEP) qsErrors.o tqsErrors.c
 
 build: qsErrors.o
 	cp -f qsErrors.o ../../build/src/qsErrors.o
