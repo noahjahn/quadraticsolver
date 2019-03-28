@@ -19,9 +19,9 @@ Returns whether an error occurred or not.
 
 #include "qsResults.h"
 
-int qsResults() {
+int qsResults(int results) {
 	int error = 0; //Successful
-
+	//Move code from qsSolve to here.
 
 
 	return error;
