@@ -20,8 +20,10 @@ Returns whether an error occurred or not.
 
 int tqsValidate() {
     int error = 0; //Successful
-
-    //qsValidate();
+    char *line = "1, 2, 3";
+    char nline = 50;
+    double *a, *b, *c;
+    qsValidate(line, nline, a, b, c);
 
     return error;
 }
