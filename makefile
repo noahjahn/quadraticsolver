@@ -16,5 +16,5 @@ runHelp:
 clean:
 	@cd src; make clean
 
-uTest:
-	@cd src; make uTest
+test:
+	@cd src; make test
