@@ -16,7 +16,7 @@ Returns whether an error occurred or not.
 2+  - Undefined
 *****************************************************************/
 
-#include "qsGetline/qsGetline.h"
+#include "qsGetline.h"
 
 int tqsGetline() {
     int error = 0; //Successful

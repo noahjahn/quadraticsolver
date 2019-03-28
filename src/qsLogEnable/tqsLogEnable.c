@@ -16,7 +16,7 @@ Returns whether an error occurred or not.
 2+  - Undefined
 *****************************************************************/
 
-#include "qsLogEnable/qsLogEnable.h"
+#include "qsLogEnable.h"
 
 int tqsLogEnable() {
     int error = 0; //Successful

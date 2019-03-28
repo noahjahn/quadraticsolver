@@ -16,7 +16,7 @@ Returns whether an error occurred or not.
 2+  - Undefined
 *****************************************************************/
 
-#include "qsValidate/qsValidate.h"
+#include "qsValidate.h"
 
 int tqsValidate() {
     int error = 0; //Successful
