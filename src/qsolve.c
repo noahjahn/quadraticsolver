@@ -40,6 +40,7 @@ Returns whether an error occurred or not.
 #include "qsPutline/qsPutline.h"
 #include "qsResults/qsResults.h"
 #include "qsSolve/qsSolve.h"
+#include "stdbool.h"
 
 int logging = 0; // 0 is off 1 is on
 
@@ -47,13 +48,12 @@ int logging = 0; // 0 is off 1 is on
 
 int main(int argc, char const *argv[]) {
 
-    //Declare system variables
+    //Error management
     int error = 0; //Successful
-    int BUFFERSIZE = (sizeof(char)*50); //Size of the buffer we are using to catch user input
-    double *a; double *b; double *c; // coefficients declared and initialized
-    char *buffer; //the buffer to catch the user's input.
 
-    //Print startup text
+    /***************************************************************************
+    Print startup text and licsensing info.
+    ***************************************************************************/
     printf("Command Line Quadratic Equation Solver\n");
     printf("VERSION: %.2f\n", VERSION);
     printf("TEAM: Noah Jahn, Paul VanderWeele\n");
@@ -61,7 +61,9 @@ int main(int argc, char const *argv[]) {
     printf("LICENSE: GPL 2.0\n");
     printf("For help on how to use the program, see ./qsolve help\n\n");
 
-
+    /***************************************************************************
+        Logging and Error control.
+    ***************************************************************************/
     // check if arguments were supplied for a, b, and c
     if (argc == 2) {
         //** qsHelp() **//
@@ -70,6 +72,7 @@ int main(int argc, char const *argv[]) {
             if (qsHelp() != 0) {
                 printf("ERROR: unable to print help\n");
                 error = -300;
+                //handle error
             }
         //** qsLogEnable() **//
         // check if argument passed in was -log
@@ -77,6 +80,7 @@ int main(int argc, char const *argv[]) {
             if (qsLogEnable(&logging) != 0) { // turn on logging
                 printf("ERROR: unable to enable logging\n");
                 error = -301;
+                //handle error
             }
         }
     } else if (argc > 2) {
@@ -85,6 +89,7 @@ int main(int argc, char const *argv[]) {
         // printf("ERROR: too many arguments. See ./qsolve help\n");
         qsErrors("qsolve - main - too many arguments");
         error = -102;
+        //handle error
     }
 
     //** qsLog() **//
@@ -99,25 +104,58 @@ int main(int argc, char const *argv[]) {
         }
     }
 
+    /***************************************************************************
+        System Variables
+    ***************************************************************************/
+    int BUFFERSIZE = (sizeof(char)*50); //Size of the buffer we are using to catch user input
+    double *a; double *b; double *c; // coefficients declared and initialized
+    char *buffer; //the buffer to catch the user's input.
+    bool hasSigLoss;
+
     //Allocate memory for the buffer, and return error if malloc fails.
     if(NULL == (buffer = malloc(BUFFERSIZE))) {
         error = -1; //Unsuccessful
-    }
-    //** qsGetLine() **//
-    //Ask the user for input, and read a line.
-    if(-1 == (error = qsGetline(buffer, BUFFERSIZE))) {
-    	printf("Failed to scan user input");
-    	exit(EXIT_FAILURE); //exit as unsuccessful
+        //add logging for memory allocation failure
+        exit(EXIT_FAILURE);
     }
 
-    //** qsValidate **//
-    //Validate the input from the user.
-    if(-1 == (error = qsValidate(buffer, BUFFERSIZE, a, b, c))) {
-    	printf("Failed to validate user input");
-    	exit(EXIT_FAILURE); //exit as unsuccessful
-    }
+    /***************************************************************************
+        Get input from user and validate.
+    ***************************************************************************/
+    do { //Ask the user for input.
 
-    printf("**TEST** The coefficients you entered are: %s\n", buffer);
+      //** qsGetLine() **//
+      //Ask the user for input, and read a line.
+      if(-1 == (error = qsGetline(buffer, BUFFERSIZE))) {
+        //add logging for failed getLine call
+      	exit(EXIT_FAILURE); //exit as unsuccessful
+      }
+
+      //** qsValidate **//
+      //Validate the input from the user.
+      if(-1 == (error = qsValidate(buffer, BUFFERSIZE, a, b, c))) {
+        //add logging for failed validate call
+      	exit(EXIT_FAILURE); //exit as unsuccessful
+      }
+
+      //Print bad input return.
+      if(error == 2) printf("\"%s\" contains bad input.\n\n", buffer);
+
+    } while(error == 2); //Ask again if input was bad with no fatal error.
+
+    /***************************************************************************
+        Perform quadratic operation.
+    ***************************************************************************/
+
+    /***************************************************************************
+        Determine results.
+    ***************************************************************************/
+
+    /***************************************************************************
+        Output results to user.
+    ***************************************************************************/
+
+
     //Close resources
     free(buffer);
 
