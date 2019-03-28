@@ -39,27 +39,39 @@ int qsValidate(char *line, int nline,
 	}
 	//If input is valid
 	else {
-		char *_line[nline], *radix[nline]; //buffer to store individual input text.
-		float _a, _b, _c; //stores user input values.
-		bool isFloat = false;
-    bool isDouble = false;
-    bool isZero = false; //booleans to interpret input
+    int i = 0;
+    while (i < 2 && error != -1 && error != 2) {
+  		char *_line[nline], *radix[nline]; //buffer to store individual input text.
+  		float value; //stores user input values.
+  		bool isFloat = false;
+      bool isDouble = false;
+      bool isZero = false; //booleans to interpret input
 
-		 strncpy(_line[0],(strsep(&line, ",")), nline);
+  		strncpy(_line[0],(strsep(&line, ",")), nline);
 
-		if(0 == strncmp(_line[0],"0",1)) isZero = true; //Check if the value is zero (in case we have an error).
-		if(NULL != (strncpy(radix[0], strstr(_line[0], "."), nline))) isFloat = true; //Check if the value has a radix
-		if(isFloat && (9 < strlen(radix))) isDouble = true; //Check if there are more than 8 numbers and the radix
+  		if(0 == strncmp(_line[0],"0",1)) isZero = true; //Check if the value is zero (in case we have an error).
+  		if(NULL != (strncpy(radix[0], strstr(_line[0], "."), nline))) isFloat = true; //Check if the value has a radix
+  		if(isFloat && (9 < strlen(radix[0]))) isDouble = true; //Check if there are more than 8 numbers and the radix
 
-		_a = strtof(_line, NULL); //Convert our parsed value into a float.
+  		value = strtof(_line[0], NULL); //Convert our parsed value into a float.
 
-		if(_a == 0 && !isZero) { //If we got 0 and isZero is false
-			error = 2; //Bad input
-		}
+  		if(value == 0 && !isZero) { //If we got 0 and isZero is false
+  			error = 2; //Bad input
+  		}
 
-
-
-
+      if(isDouble) {
+        error = 1; //Loss of significance
+      }
+      switch (i) {
+        case 0: *a = value;
+        break;
+        case 1: *b = value;
+        break;
+        case 2: *c = value;
+        break;
+      }
+      i++; //Increment loop
+    }
 	}
 	return error;
 }
