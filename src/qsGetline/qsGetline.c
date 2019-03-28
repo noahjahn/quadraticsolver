@@ -39,7 +39,7 @@ int qsGetline(char *line, int nline) {
 		//Catch user input
 		//"%[^\n]" reads characters until a \n is found
 		if(0 == scanf("%[^\n]", line)){
-			error = 1;//Unsuccessful
+			error = -1;//Unsuccessful
 		}
 	}
 	return error;

@@ -64,12 +64,14 @@ int main(int argc, char const *argv[]) {
 
     // check if arguments were supplied for a, b, and c
     if (argc == 2) {
+        //** qsHelp() **//
         // check if argument passed in was help
         if (strncmp(argv[1], "help", 4) == 0) {
             if (qsHelp() != 0) {
                 printf("ERROR: unable to print help\n");
                 error = -300;
             }
+        //** qsLogEnable() **//
         // check if argument passed in was -log
       } else if (strncmp(argv[1], "-log", 4) == 0) { // check if logging argument was passed in
             if (qsLogEnable(&logging) != 0) { // turn on logging
@@ -78,12 +80,14 @@ int main(int argc, char const *argv[]) {
             }
         }
     } else if (argc > 2) {
+        //** qsErrors() **//
         // if help char * wasn't passed in, tell the user the error
         // printf("ERROR: too many arguments. See ./qsolve help\n");
         qsErrors("qsolve - main - too many arguments");
         error = -102;
     }
 
+    //** qsLog() **//
     // if we didn't find an error with number of arguments, we can continue..
     if (error == 0) {
         if (logging) {
@@ -101,13 +105,14 @@ int main(int argc, char const *argv[]) {
     }
     //** qsGetLine() **//
     //Ask the user for input, and read a line.
-    if(0 != (error = qsGetline(buffer, BUFFERSIZE))) {
+    if(-1 == (error = qsGetline(buffer, BUFFERSIZE))) {
     	printf("Failed to scan user input");
     	exit(EXIT_FAILURE); //exit as unsuccessful
     }
 
     //** qsValidate **//
-    if(0 != (error = qsValidate(buffer, BUFFERSIZE, a, b, c))) {
+    //Validate the input from the user.
+    if(-1 == (error = qsValidate(buffer, BUFFERSIZE, a, b, c))) {
     	printf("Failed to validate user input");
     	exit(EXIT_FAILURE); //exit as unsuccessful
     }
