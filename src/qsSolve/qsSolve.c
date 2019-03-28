@@ -23,6 +23,7 @@ Returns whether an error occurred or not.
 #include <math.h>
 #include "qsSolve.h"
 #include "../qsLog/qsLog.h"
+#include "../qsErrors/qsErrors.h"
 
 int qsSolve(double a, double b, double c, double * x1, double * x2) {
 	int error = 0; //Successful

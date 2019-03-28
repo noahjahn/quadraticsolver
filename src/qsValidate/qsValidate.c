@@ -22,6 +22,9 @@ Returns whether an error occurred or not.
 *****************************************************************/
 
 #include "qsValidate.h"
+#include "stdlib.h"
+#include "string.h"
+#include "stdbool.h"
 
 int qsValidate(char *line, int nline,
     double *a, double *b, double *c) {
@@ -38,15 +41,17 @@ int qsValidate(char *line, int nline,
 	else {
 		char *_line[nline], *radix[nline]; //buffer to store individual input text.
 		float _a, _b, _c; //stores user input values.
-		bool isFloat = false, isDouble = false, isZero = false; //booleans to interpret input
+		bool isFloat = false;
+    bool isDouble = false;
+    bool isZero = false; //booleans to interpret input
 
-		_line = strsep(line, ',');
+		 strncpy(_line[0],(strsep(&line, ",")), nline);
 
-		if(0 = strcmp(_line,"0")) isZero = true; //Check if the value is zero (in case we have an error).
-		if(NULL != (radix = strstr(_line, "."))) isFloat = true; //Check if the value has a radix
+		if(0 == strncmp(_line[0],"0",1)) isZero = true; //Check if the value is zero (in case we have an error).
+		if(NULL != (strncpy(radix[0], strstr(_line[0], "."), nline))) isFloat = true; //Check if the value has a radix
 		if(isFloat && (9 < strlen(radix))) isDouble = true; //Check if there are more than 8 numbers and the radix
 
-		_a = strtof(_line); //Convert our parsed value into a float.
+		_a = strtof(_line, NULL); //Convert our parsed value into a float.
 
 		if(_a == 0 && !isZero) { //If we got 0 and isZero is false
 			error = 2; //Bad input
