@@ -14,7 +14,7 @@ test: tqsLog.o
 	cp -f tqsLog.o ../../build/src/tqsLog.o
 
 tqsLog.o: $(TEST_OBJS)
-	$(CC) $(CCFLAGS) -c tqsLog.c
+	$(CC) $(CCFLAGS) -c tqsLog.c qsLog.c
 
 clean:
 	rm -rf *.o

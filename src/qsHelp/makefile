@@ -14,7 +14,7 @@ test: tqsHelp.o
 	cp -f tqsHelp.o ../../build/src/tqsHelp.o
 
 tqsHelp.o: $(TEST_OBJS)
-	$(CC) $(CCFLAGS) -c tqsHelp.c
+	$(CC) $(CCFLAGS) -c tqsHelp.c qsHelp.c
 
 clean:
 	rm -rf *.o

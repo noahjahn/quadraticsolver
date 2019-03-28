@@ -14,7 +14,7 @@ test: tqsErrors.o
 	cp -f tqsErrors.o ../../build/src/tqsErrors.o
 
 tqsErrors.o: $(TEST_OBJS)
-	$(CC) $(CCFLAGS) -c tqsErrors.c
+	$(CC) $(CCFLAGS) -c tqsErrors.c qsErrors.c
 
 clean:
 	rm -rf *.o

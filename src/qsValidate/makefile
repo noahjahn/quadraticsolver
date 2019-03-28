@@ -1,5 +1,5 @@
 CC = gcc
-CCFLAGS = -Wall -pedantic
+CCFLAGS = -Wall -pedantic -std=gnu99
 DEP = qsValidate.h
 BUILD_OBJS = $(DEP) qsValidate.c
 TEST_OBJS = $(BUILD_OBJS) tqsValidate.c

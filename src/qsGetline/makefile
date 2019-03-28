@@ -1,5 +1,5 @@
 CC = gcc
-CCFLAGS = -Wall -pedantic
+CCFLAGS = -Wall -pedantic -std=gnu99
 DEP = qsGetline.h
 BUILD_OBJS = $(DEP) qsGetline.c
 TEST_OBJS = $(DEP) qsGetline.o tqsGetline.c
@@ -14,7 +14,7 @@ test: tqsGetline.o
 	cp -f tqsGetline.o ../../build/src/tqsGetline.o
 
 tqsGetline.o: $(TEST_OBJS)
-	$(CC) $(CCFLAGS) -c tqsGetline.c
+	$(CC) $(CCFLAGS) -c tqsGetline.c qsGetline.c
 
 clean:
 	rm -rf *.o

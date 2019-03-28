@@ -42,13 +42,20 @@ int qsValidate(char *line, int nline,
     int i = 0;
     while (i < 2 && error != -1 && error != 2) {
   		char *_line[nline], *radix[nline]; //buffer to store individual input text.
+      char *field;
   		float value; //stores user input values.
   		bool isFloat = false;
       bool isDouble = false;
       bool isZero = false; //booleans to interpret input
 
-  		strncpy(_line[0],(strsep(&line, ",")), nline);
-
+/********
+ERROR AREA
+*/
+      //pull off first field, and copy the contents
+      field = strsep(&line, ",");
+  		strncpy(_line[0], line, nline);
+/*********
+**********/
   		if(0 == strncmp(_line[0],"0",1)) isZero = true; //Check if the value is zero (in case we have an error).
   		if(NULL != (strncpy(radix[0], strstr(_line[0], "."), nline))) isFloat = true; //Check if the value has a radix
   		if(isFloat && (9 < strlen(radix[0]))) isDouble = true; //Check if there are more than 8 numbers and the radix

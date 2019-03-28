@@ -1,5 +1,5 @@
 CC = gcc
-CCFLAGS = -Wall -pedantic
+CCFLAGS = -Wall -pedantic -std=gnu99
 DEP = qsResults.h
 BUILD_OBJS = $(DEP) qsResults.c
 TEST_OBJS = $(DEP) qsResults.o tqsResults.c
@@ -14,7 +14,7 @@ test: tqsResults.o
 	cp -f tqsResults.o ../../build/src/tqsResults.o
 
 tqsResults.o: $(TEST_OBJS)
-	$(CC) $(CCFLAGS) -c tqsResults.c
+	$(CC) $(CCFLAGS) -c tqsResults.c qsResults.c
 
 clean:
 	rm -rf *.o
