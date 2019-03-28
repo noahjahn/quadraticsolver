@@ -50,7 +50,7 @@ int main(int argc, char const *argv[]) {
     //Declare system variables
     int error = 0; //Successful
     int BUFFERSIZE = (sizeof(char)*50); //Size of the buffer we are using to catch user input
-    double a; double b; double c; // coefficients declared and initialized
+    double *a; double *b; double *c; // coefficients declared and initialized
     char *buffer; //the buffer to catch the user's input.
 
     //Print startup text
