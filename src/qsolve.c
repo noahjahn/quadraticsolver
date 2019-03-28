@@ -65,13 +65,13 @@ int main(int argc, char const *argv[]) {
     // check if arguments were supplied for a, b, and c
     if (argc == 2) {
         // check if argument passed in was help
-        if (strcmp(argv[1], "help") == 0) {
+        if (strncmp(argv[1], "help", 4) == 0) {
             if (qsHelp() != 0) {
                 printf("ERROR: unable to print help\n");
                 error = -300;
             }
         // check if argument passed in was -log
-        } else if (strcmp(argv[1], "-log") == 0) { // check if logging argument was passed in
+      } else if (strncmp(argv[1], "-log", 4) == 0) { // check if logging argument was passed in
             if (qsLogEnable(&logging) != 0) { // turn on logging
                 printf("ERROR: unable to enable logging\n");
                 error = -301;
@@ -99,13 +99,14 @@ int main(int argc, char const *argv[]) {
     if(NULL == (buffer = malloc(BUFFERSIZE))) {
         error = -1; //Unsuccessful
     }
-
+    //** qsGetLine() **//
     //Ask the user for input, and read a line.
     if(0 != (error = qsGetline(buffer, BUFFERSIZE))) {
     	printf("Failed to scan user input");
     	exit(EXIT_FAILURE); //exit as unsuccessful
     }
 
+    //** qsValidate **//
     if(0 != (error = qsValidate(buffer, BUFFERSIZE, a, b, c))) {
     	printf("Failed to validate user input");
     	exit(EXIT_FAILURE); //exit as unsuccessful
