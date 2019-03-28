@@ -128,8 +128,6 @@ int main(int argc, char const *argv[]) {
     /***************************************************************************
         Get input from user and validate.
     ***************************************************************************/
-    do { //Ask the user for input.
-
       //** qsGetLine() **//
       //Ask the user for input, and read a line.
       if(-1 == (error = qsGetline(buffer, BUFFERSIZE))) {
@@ -144,10 +142,6 @@ int main(int argc, char const *argv[]) {
       	exit(EXIT_FAILURE); //exit as unsuccessful
       }
 
-      //Print bad input return.
-      if(error == 2) printf("\"%s\" contains bad input.\n\n", buffer);
-
-    } while(error == 2); //Ask again if input was bad with no fatal error.
 
     /***************************************************************************
         Perform quadratic operation.
