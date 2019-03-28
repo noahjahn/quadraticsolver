@@ -18,3 +18,6 @@ clean:
 
 test:
 	@cd src; make test
+
+runtest:
+	./build/tqsolve

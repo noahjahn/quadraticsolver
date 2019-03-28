@@ -2,7 +2,7 @@ CC = gcc
 CCFLAGS = -Wall -pedantic
 DEP = qsValidate.h
 BUILD_OBJS = $(DEP) qsValidate.c
-TEST_OBJS = $(DEP) qsValidate.o tqsValidate.c
+TEST_OBJS = $(BUILD_OBJS) tqsValidate.c
 
 build: qsValidate.o
 	cp -f qsValidate.o ../../build/src/qsValidate.o
@@ -10,11 +10,11 @@ build: qsValidate.o
 qsValidate.o: $(BUILD_OBJS)
 	$(CC) $(CCFLAGS) -c qsValidate.c
 
-test: tqsValidate.o
+test: tqsValidate.o qsValidate.o
 	cp -f tqsValidate.o ../../build/src/tqsValidate.o
 
 tqsValidate.o: $(TEST_OBJS)
-	$(CC) $(CCFLAGS) -c tqsValidate.c
+	$(CC) $(CCFLAGS) -c tqsValidate.c qsValidate.c
 
 clean:
 	rm -rf *.o

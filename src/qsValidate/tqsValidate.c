@@ -23,7 +23,7 @@ int tqsValidate() {
     char *line = "1, 2, 3";
     char nline = 50;
     double *a, *b, *c;
-    qsValidate(line, nline, a, b, c);
+    error = qsValidate(line, nline, a, b, c);
 
     return error;
 }

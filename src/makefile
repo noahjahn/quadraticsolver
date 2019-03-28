@@ -10,11 +10,13 @@ DEP_OBJS_TEST = tqsolve.o qsErrors/tqsErrors.o qsGetline/tqsGetline.o qsHelp/tqs
 qsPutline/tqsPutline.o qsResults/tqsResults.o qsSolve/tqsSolve.o qsValidate/tqsValidate.o
 
 #Files required to link the program after the build is created.
-BUILD_OBJS =  ../build/src/qsolve.o ../build/src/qsErrors.o ../build/src/qsHelp.o ../build/src/qsLog.o \
+BUILD_OBJS =  ../build/src/qsolve.o ../build/src/qsSolve.o ../build/src/qsErrors.o ../build/src/qsHelp.o ../build/src/qsLog.o \
 ../build/src/qsLogEnable.o ../build/src/qsValidate.o ../build/src/qsGetline.o ../build/src/qsPutline.o ../build/src/qsResults.o
 
 #ADDITIONAL files required to link the program if we are testing.
-BUILD_OBJS_TEST = ../build/qsolve ../build/src/tqsolve.o ../build/src/tqsErrors.o ../build/src/tqsHelp.o ../build/src/tqsLog.o \
+BUILD_OBJS_TEST = ../build/src/qsSolve.o ../build/src/qsErrors.o ../build/src/qsHelp.o ../build/src/qsLog.o \
+../build/src/qsLogEnable.o ../build/src/qsValidate.o ../build/src/qsGetline.o ../build/src/qsPutline.o ../build/src/qsResults.o \
+../build/qsolve ../build/src/tqsSolve.o ../build/src/tqsErrors.o ../build/src/tqsHelp.o ../build/src/tqsLog.o \
 ../build/src/tqsLogEnable.o ../build/src/tqsValidate.o ../build/src/tqsGetline.o ../build/src/tqsPutline.o ../build/src/tqsResults.o
 
 #after copying all the .c's to the qs folder (main): -o *.c -lm
@@ -37,10 +39,11 @@ build:
 qsolve: $(DEP_OBJS)
 	$(CC) $(CCFLAGS) -c qsolve.c 						#Compile the main controller
 	cp qsolve.o ../build/src/qsolve.o 					#Copy the main controller to the build
-	$(CC) $(CCFLAGS) -o ../build/qsolve $(BUILD_OBJS)	#Link the built program.
+	$(CC) $(CCFLAGS) -o ../build/qsolve $(BUILD_OBJS) -lm	#Link the built program.
 
 run:
 	../build/qsolve
+
 
 runLog:
 	../build/qsolve -log
@@ -83,4 +86,4 @@ test:
 tqsolve: $(DEP_OBJS_TEST)
 	$(CC) $(CCFLAGS) -c tqsolve.c 								#Compile the test module.
 	cp tqsolve.o ../build/src/tqsolve.o 						#Copy the test module to the build.
-	$(CC) $(CCFLAGS) -o ../build/tqsolve $(BUILD_OBJS_TEST) 	#Link the built test module.
+	$(CC) $(CCFLAGS) -o ../build/tqsolve $(BUILD_OBJS_TEST) -lm 	#Link the built test module.
