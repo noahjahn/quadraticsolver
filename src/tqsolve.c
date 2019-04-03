@@ -39,31 +39,31 @@ int main(int argc, char const *argv[]) {
     int error = 0; //Successful
 
     if(0 != tqsValidate()) { 	//Test qsValidate module.
-    	;//Add Error handling.
+    	printf("qsValidate Failed");//Add Error handling.
     }
     if(0 != tqsSolve()) { 		//Test qsSolve module.
-    	;//Add Error handling.
+    	printf("qsSolve Failed");//Add Error handling.
     }
     if(0 != tqsResults()) { 	//Test qsResults module.
-    	;//Add Error handling.
+    	printf("qsResults Failed");//Add Error handling.
     }
     if(0 != tqsPutline()) { 	//Test qsPutline module.
-    	;//Add Error handling.
+    	printf("qsPutline Failed");//Add Error handling.
     }
     if(0 != tqsLogEnable()) { 	//Test qsLogEnable module.
-    	;//Add Error handling.
+    	printf("qsLogEnable Failed");//Add Error handling.
     }
     if(0 != tqsLog()) { 		//Test qsLog module.
-    	;//Add Error handling.
+    	printf("qsLog Failed");//Add Error handling.
     }
     if(0 != tqsHelp()) { 		//Test qsHelp module.
-    	;//Add Error handling.
+    	printf("qsHelp Failed");//Add Error handling.
     }
     if(0 != tqsGetline()) { 	//Test qsGetline module.
-    	;//Add Error handling.
+    	printf("qsGetline Failed");//Add Error handling.
     }
     if(0 != tqsErrors()) { 		//Test qsErrors module.
-    	;//Add Error handling.
+    	printf("qsErrors Failed");//Add Error handling.
     }
 
     return error;
