@@ -63,8 +63,8 @@ int qsValidate(char *line, int nline,
 
       //If a value has a radix, check for loss of significance.
       //Check if there are more than 8 numbers after the radix
-      while(loss_of_sig == false && i <= 2) {
-        char *field, *loc, *radix; //variable to store which coefficient we are checking.
+      while(i <= 2) {
+        char *field, *radix; //variable to store which coefficient we are checking.
         char buffer[nline]; //Stack buffer to hold the radix string.
         radix = &buffer[0]; //Set radix to point at buffer.
         //Determine which coefficient we are checking.
@@ -77,11 +77,10 @@ int qsValidate(char *line, int nline,
           break;
         }
         //If the string has a radix, check it's length, and set the flag or not.
-        if(NULL != (loc = strstr(&field[0], "."))) {
-          if(NULL != (strncpy(radix, &loc[0], nline))) {
-            if(9 < strlen(&radix[0])) {
-              loss_of_sig = true;
-            }
+        if(NULL != (radix = strstr(&field[0], "."))) {
+          if(9 < strlen(&radix[0])) {
+            loss_of_sig = true;
+            radix[9] = '\0';
           }
         }
         i++;

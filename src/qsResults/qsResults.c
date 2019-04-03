@@ -36,16 +36,14 @@ int qsResults(char *line, int nline, double *x1, double *x2, int validate, int s
 
 	//If the input was bad, don't do anything else, and set error accordingly.
 	if(validate == 2){
-		if(NULL == sprintf(line, "Bad input. Please try again."));
+		sprintf(line, "Bad input. Please try again.");
 		error = 1;
 	}
 	//Otherwise build return messege for user.
 	else {
 		//Determine a possible loss of signifance.
 		if(validate == 1){
-			sprintf(buffer_ptr, "***Possible loss of significance!\n");
-			if(NULL == strcat(line, &buffer_ptr[0])) error = -1; //Add comment to output
-			buffer_ptr[0] = '\0'; //Clear buffer afterwards.
+			printf("\n***Possible loss of significance!\n");
 		}
 
 		switch (solve) {

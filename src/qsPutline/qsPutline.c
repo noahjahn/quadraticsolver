@@ -27,10 +27,10 @@ int qsPutline(char *line, int nline, int internal_error) {
 	int error = 0; //Successful
 
 	if(internal_error) {
-		printf("Internal Error. Quitting program.");
+		printf("\n\nInternal Error. Quitting program.\n\n");
 	}
 	else {
-		printf("%s", line);
+		printf("\n%s\n", line);
 	}
 
 
