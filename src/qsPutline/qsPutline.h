@@ -11,5 +11,5 @@ qsPutline()		- Return the type of rootsand (if applicable)
 tqsPutline() 	- Tests qsPutline and reports a failure.
 **************************************************************/
 
-int qsPutline(char *line, int nline);
+int qsPutline(char *line, int nline, int internal_error);
 int tqsPutline();

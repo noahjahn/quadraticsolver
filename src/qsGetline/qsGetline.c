@@ -20,12 +20,14 @@ Returns whether an error occurred or not.
 
 #include "qsGetline.h"
 #include <stdio.h>
+#include "../qsLog/qsLog.h"
+#include "../qsErrors/qsErrors.h"
 
 int qsGetline(char *line, int nline) {
 	int error = 0; //No error
 
 	if (logging) {
-		qsLog("qsGetline.c - qsGetline - Entered new function, argument passed in: *line = %s, nline = %d\n", line, nline, a, b, c);
+		qsLog("qsGetline.c - qsGetline - Entered new function, argument passed in: *line = %s, nline = %d\n", line, nline);
 	}
 	//Validate input
 	if(!line) {

@@ -26,6 +26,8 @@ Returns whether an error occurred or not.
 #include <string.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include "../qsLog/qsLog.h"
+#include "../qsErrors/qsErrors.h"
 
 int qsValidate(char *line, int nline,
     double *a, double *b, double *c) {

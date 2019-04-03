@@ -144,13 +144,13 @@ int main(int argc, char const *argv[]) {
         Determine results.
     ***************************************************************************/
     //** qsResults **//
-    if(error >= 0) error = qsResults(line, nline, x1, x2, validate_ret, solve_ret));
+    if(error >= 0) error = qsResults(buffer, BUFFERSIZE, x1, x2, validate_ret, solve_ret);
     if(error == 1) qsHelp(); //If we were given bad input, display help
     /***************************************************************************
         Output results to user.
     ***************************************************************************/
     //** qsPutline **//
-    error = qsPutline(line, nline, error);
+    error = qsPutline(buffer, BUFFERSIZE, error);
 
     //Close resources
     free(buffer);

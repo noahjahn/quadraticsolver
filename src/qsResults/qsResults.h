@@ -10,5 +10,5 @@ qsResults()		- Determines the type of user feedback.
 tqsResults() 	- Tests qsResults and reports a failure.
 **************************************************************/
 
-int qsResults();
+int qsResults(char *line, int nline, double *x1, double *x2, int validate, int solve);
 int tqsResults();

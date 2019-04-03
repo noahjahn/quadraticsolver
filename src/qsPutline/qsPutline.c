@@ -17,6 +17,8 @@ Returns whether an error occurred or not.
 
 #include "qsPutline.h"
 #include <stdio.h>
+#include "../qsLog/qsLog.h"
+#include "../qsErrors/qsErrors.h"
 
 int qsPutline(char *line, int nline, int internal_error) {
 	if (logging) {
@@ -24,7 +26,7 @@ int qsPutline(char *line, int nline, int internal_error) {
   }
 	int error = 0; //Successful
 
-	if(internal_error == true) {
+	if(internal_error) {
 		printf("Internal Error. Quitting program.");
 	}
 	else {
