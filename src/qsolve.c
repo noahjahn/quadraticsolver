@@ -112,55 +112,53 @@ int main(int argc, char const *argv[]) {
     /***************************************************************************
         System Variables
     ***************************************************************************/
-    int BUFFERSIZE = (sizeof(char)*50); //Size of the buffer we are using to catch user input
-    double *a; double *b; double *c; // coefficients declared and initialized
+    int BUFFERSIZE = (sizeof(char)*100); //Size of the buffer we are using to catch user input
+    int validate_ret, solve_ret;
+    double *a; double *b; double *c; double *x1; double *x2; // coefficients declared and initialized
     char *buffer; //the buffer to catch the user's input.
-    bool hasSigLoss;
-    int results;
-
-    //Allocate memory for the buffer, and return error if malloc fails.
-    if(NULL == (buffer = malloc(BUFFERSIZE))) {
-        error = -1; //Unsuccessful
-        //add logging for memory allocation failure
-        exit(EXIT_FAILURE);
-    }
+    if(NULL == (a = malloc(sizeof(double)))) error = -1;
+    if(NULL == (b = malloc(sizeof(double)))) error = -1;
+    if(NULL == (c = malloc(sizeof(double)))) error = -1;
+    if(NULL == (x1 = malloc(sizeof(double)))) error = -1;
+    if(NULL == (x2 = malloc(sizeof(double)))) error = -1;
+    if(NULL == (buffer = malloc(BUFFERSIZE))) error = -1;
 
     /***************************************************************************
         Get input from user and validate.
     ***************************************************************************/
-      //** qsGetLine() **//
-      //Ask the user for input, and read a line.
-      if(-1 == (error = qsGetline(buffer, BUFFERSIZE))) {
-        //add logging for failed getLine call
-      	exit(EXIT_FAILURE); //exit as unsuccessful
-      }
+    //** qsGetLine() **//
+    //Ask the user for input, and read a line.
+    if(error >= 0) error = qsGetline(buffer, BUFFERSIZE);
 
-      //** qsValidate **//
-      //Validate the input from the user.
-      if(-1 == (error = qsValidate(buffer, BUFFERSIZE, a, b, c))) {
-        //add logging for failed validate call
-      	exit(EXIT_FAILURE); //exit as unsuccessful
-      }
-
-
+    //** qsValidate **//
+    //Validate the input from the user.
+    if(error >= 0) error = qsValidate(buffer, BUFFERSIZE, a, b, c);
+    validate_ret = error; //Hold return value to determine results
     /***************************************************************************
         Perform quadratic operation.
     ***************************************************************************/
     //** qsSolve **//
-    error = qsSolve(a, b, c, x1, x2)));
-
+    if(error >= 0) error = qsSolve(*a, *b, *c, x1, x2);
+    solve_ret = error; //Hold return value to determine results
     /***************************************************************************
         Determine results.
     ***************************************************************************/
-    error = qsResults(results));
+    //** qsResults **//
+    if(error >= 0) error = qsResults(line, nline, x1, x2, validate_ret, solve_ret));
+    if(error == 1) qsHelp(); //If we were given bad input, display help
     /***************************************************************************
         Output results to user.
     ***************************************************************************/
-
+    //** qsPutline **//
+    error = qsPutline(line, nline, error);
 
     //Close resources
     free(buffer);
-
+    free(a);
+    free(b);
+    free(c);
+    free(x1);
+    free(x2);
     //Exit Program
     return error;
 }

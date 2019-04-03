@@ -12,8 +12,8 @@ nline 	- Length of buffer passed from main program.
 
 **Output**
 Returns whether an error occurred or not.
-0 	- Successful
 -1 	- Unsuccessful
+0 	- Successful
 2+ 	- Undefined
 
 *****************************************************************/
@@ -24,6 +24,9 @@ Returns whether an error occurred or not.
 int qsGetline(char *line, int nline) {
 	int error = 0; //No error
 
+	if (logging) {
+		qsLog("qsGetline.c - qsGetline - Entered new function, argument passed in: *line = %s, nline = %d\n", line, nline, a, b, c);
+	}
 	//Validate input
 	if(!line) {
 		error = -1; //Unsuccessful
