@@ -40,14 +40,14 @@ int qsSolve(double a, double b, double c, double * x1, double * x2) {
 		qsErrors("qsSolve.c - qsSolve - Argument a is out of range\n");
 		error = -2;
 	}
-	if (b > (3.4 * pow(10,38)) || a < (-3.4 * pow(10,38))) {
+	if (b > (3.4 * pow(10,38)) || b < (-3.4 * pow(10,38))) {
 		if (logging) {
 			qsLog("qsSolve.c - qsSolve - Argument b is out of range\n");
 		}
 		qsErrors("qsSolve.c - qsSolve - Argument b is out of range\n");
 		error = -3;
 	}
-	if (c > (3.4 * pow(10,38)) || a < (-3.4 * pow(10,38))) {
+	if (c > (3.4 * pow(10,38)) || c < (-3.4 * pow(10,38))) {
 		if (logging) {
 			qsLog("qsSolve.c - qsSolve - Argument c is out of range\n");
 		}
