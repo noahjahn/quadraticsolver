@@ -7,6 +7,7 @@ LICENSE: GPL 3.0
 Determines what the roots of the quadratic means.
 
 **Input**
+Doubles a, b, and c, in IEEE 32-bit single-precision range and the address of x1, and x2.
 
 **Output**
 Returns whether an error occurred or not.
